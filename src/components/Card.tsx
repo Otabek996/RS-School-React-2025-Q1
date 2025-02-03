@@ -4,6 +4,8 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Stack,
+  Chip,
 } from '@mui/material';
 
 interface CharacterProps {
@@ -17,6 +19,19 @@ interface CharacterProps {
 }
 
 const Card: React.FC<CharacterProps> = ({ character }) => {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Alive':
+        return 'success';
+      case 'Dead':
+        return 'error';
+      case 'Unknown':
+        return 'warning';
+      default:
+        return 'primary';
+    }
+  };
+
   return (
     <MUICard sx={{ maxWidth: 300, borderRadius: 2, boxShadow: 3 }}>
       <CardMedia
@@ -29,9 +44,15 @@ const Card: React.FC<CharacterProps> = ({ character }) => {
         <Typography variant="h6" component="div">
           {character.name}
         </Typography>
-        <Typography color="text.secondary">
-          {character.species} - {character.status}
-        </Typography>
+        <Typography color="text.secondary">{character.species}</Typography>
+        <Stack spacing={1} sx={{ alignItems: 'center' }}>
+          <Stack direction="row" spacing={1}>
+            <Chip
+              label={character.status}
+              color={getStatusColor(character.status)}
+            />
+          </Stack>
+        </Stack>
       </CardContent>
     </MUICard>
   );
