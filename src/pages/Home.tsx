@@ -1,7 +1,7 @@
 import { useGetAllCharactersQuery } from '../store/API/CharactersAPI';
 import Card from '../components/Card';
 import { Character } from '../types/Character';
-import { Grid, Box } from '@mui/material';
+import { Grid } from '@mui/material';
 
 const Home = () => {
   const { data, isLoading, error } = useGetAllCharactersQuery({ page: 1 });
