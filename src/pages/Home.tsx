@@ -1,6 +1,7 @@
 import { useGetAllCharactersQuery } from '../store/API/CharactersAPI';
 import Card from '../components/Card';
 import { Character } from '../types/Character';
+import { Grid, Box } from '@mui/material';
 
 const Home = () => {
   const { data, isLoading, error } = useGetAllCharactersQuery({ page: 1 });
@@ -11,11 +12,13 @@ const Home = () => {
   return (
     <div>
       <h1>Characters</h1>
-      <div className="characters-grid">
+      <Grid className="characters-grid" container spacing={1} rowSpacing={3}>
         {data?.results.map((char: Character) => (
-          <Card key={char.id} character={char} />
+          <Grid key={char.id} item xs={3}>
+            <Card character={char} />
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </div>
   );
 };
