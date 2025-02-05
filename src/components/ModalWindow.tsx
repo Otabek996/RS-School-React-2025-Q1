@@ -1,4 +1,12 @@
-import { Modal, Box, Typography, CircularProgress } from '@mui/material';
+import { getStatusColor } from '../utils/statusColor';
+import {
+  Modal,
+  Box,
+  Typography,
+  CircularProgress,
+  Stack,
+  Chip,
+} from '@mui/material';
 import { useGetCharacterByIdQuery } from '../store/API/CharactersAPI';
 
 interface ModalWindowProps {
@@ -36,13 +44,20 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
         ) : (
           character && (
             <>
-              <Typography variant="h6">{character?.name}</Typography>
+              <Stack>
+                <Stack direction="row" spacing={2}>
+                  <Typography variant="h6">{character?.name}</Typography>
+                  <Chip
+                    label={character.status}
+                    color={getStatusColor(character.status)}
+                  />
+                </Stack>
+              </Stack>
               <img
                 src={character?.image}
                 alt={character?.name}
                 style={{ width: '100%', borderRadius: '10px' }}
               />
-              <Typography>Status: {character?.status}</Typography>
               <Typography>Species: {character?.species}</Typography>
               <Typography>Gender: {character?.gender}</Typography>
               <Typography>Origin: {character?.origin?.name}</Typography>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { getStatusColor } from '../utils/statusColor';
 import {
   Card as MUICard,
   CardContent,
@@ -19,19 +20,6 @@ interface CharacterProps {
 }
 
 const Card: React.FC<CharacterProps> = ({ character }) => {
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Alive':
-        return 'success';
-      case 'Dead':
-        return 'error';
-      case 'Unknown':
-        return 'warning';
-      default:
-        return 'primary';
-    }
-  };
-
   return (
     <MUICard
       sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 3 }}
