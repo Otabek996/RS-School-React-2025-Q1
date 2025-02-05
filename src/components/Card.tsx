@@ -33,7 +33,10 @@ const Card: React.FC<CharacterProps> = ({ character }) => {
   };
 
   return (
-    <MUICard sx={{ maxWidth: 300, borderRadius: 2, boxShadow: 3 }}>
+    <MUICard
+      sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 3 }}
+      style={{ cursor: 'pointer' }}
+    >
       <CardMedia
         component="img"
         height="300"

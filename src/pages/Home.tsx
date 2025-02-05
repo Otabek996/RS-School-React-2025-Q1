@@ -26,7 +26,6 @@ const Home = () => {
             item
             xs={3}
             onClick={() => setSelectedCharacterId(char.id)}
-            style={{ cursor: 'pointer' }}
           >
             <Card character={char} />
           </Grid>
