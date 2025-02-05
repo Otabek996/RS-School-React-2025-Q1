@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useGetAllCharactersQuery } from '../store/API/CharactersAPI';
 import Card from '../components/Card';
+import ModalWindow from '../components/ModalWindow';
 import PaginationComponent from '../components/PaginationComponent';
 import { Character } from '../types/Character';
 import { Grid } from '@mui/material';
@@ -8,6 +9,9 @@ import { Grid } from '@mui/material';
 const Home = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading, error } = useGetAllCharactersQuery({ page });
+  const [selectedCharacterId, setSelectedCharacterId] = useState<number | null>(
+    null
+  );
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
@@ -17,7 +21,13 @@ const Home = () => {
       <h1>Characters</h1>
       <Grid className="characters-grid" container spacing={1} rowSpacing={3}>
         {data?.results.map((char: Character) => (
-          <Grid key={char.id} item xs={3}>
+          <Grid
+            key={char.id}
+            item
+            xs={3}
+            onClick={() => setSelectedCharacterId(char.id)}
+            style={{ cursor: 'pointer' }}
+          >
             <Card character={char} />
           </Grid>
         ))}
@@ -32,6 +42,12 @@ const Home = () => {
           totalPages={data?.info.pages || 1}
         />
       </div>
+
+      <ModalWindow
+        open={!!selectedCharacterId}
+        handleClose={() => setSelectedCharacterId(null)}
+        characterId={selectedCharacterId}
+      />
     </div>
   );
 };
