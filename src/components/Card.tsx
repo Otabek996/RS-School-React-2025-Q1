@@ -41,6 +41,7 @@ const Card: React.FC<CharacterProps> = ({ character }) => {
             <Chip
               label={character.status}
               color={getStatusColor(character.status)}
+              sx={{ textTransform: 'capitalize' }}
             />
           </Stack>
         </Stack>

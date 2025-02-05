@@ -50,6 +50,7 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
                   <Chip
                     label={character.status}
                     color={getStatusColor(character.status)}
+                    sx={{ textTransform: 'capitalize' }}
                   />
                 </Stack>
               </Stack>
