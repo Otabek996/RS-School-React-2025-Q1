@@ -4,7 +4,7 @@ import Card from '../components/Card';
 import ModalWindow from '../components/ModalWindow';
 import PaginationComponent from '../components/PaginationComponent';
 import { Character } from '../types/Character';
-import { Grid } from '@mui/material';
+import { Grid, CircularProgress, Box } from '@mui/material';
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -13,7 +13,21 @@ const Home = () => {
     null
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <Box
+        sx={{
+          width: '100vh',
+          height: '100%',
+          display: 'flex',
+          margin: 'auto',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   if (error) return <p>Error loading data</p>;
 
   return (
