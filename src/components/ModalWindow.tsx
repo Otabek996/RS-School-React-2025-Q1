@@ -57,7 +57,12 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
               <img
                 src={character?.image}
                 alt={character?.name}
-                style={{ width: '100%', borderRadius: '10px' }}
+                style={{
+                  width: '100%',
+                  borderRadius: '15px',
+                  marginTop: '10px',
+                  marginBottom: '10px',
+                }}
               />
               <Typography>Species: {character?.species}</Typography>
               <Typography>Gender: {character?.gender}</Typography>
