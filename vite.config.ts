@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/RS-School-React-2025-Q1/',
   test: {
     globals: true,
     environment: 'jsdom',
