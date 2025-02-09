@@ -18,7 +18,7 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/RS-School-React-2025-Q1/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
